@@ -1,0 +1,19 @@
+.Footer {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.Row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.CopyRight {
+  color: white
+}
+
+.Header {
+  text-transform: uppercase;
+}
+
