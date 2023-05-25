@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start_server": "node index.js",
+    "nodemon": "nodemon index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.12.4",
+    "mongoose": "^5.11.15"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "nodemon": "2.0.22"
+  },
+  "license": "MIT"
+}
