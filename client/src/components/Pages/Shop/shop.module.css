@@ -44,4 +44,7 @@
   flex: 1 1 auto;
 }
 
+.ToggleButton > label {
+  height: 60px;
+}
 

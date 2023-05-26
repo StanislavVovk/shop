@@ -3,4 +3,4 @@ enum API_ENUM {
   CART = '/cart'
 }
 
-export default API_ENUM
+export { API_ENUM }
