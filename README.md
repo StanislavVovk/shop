@@ -6,3 +6,5 @@ cd to client, npm install. Remove example values of .env file and add yours. Sit
 cd to server, npm intall. Remove example values of .env file and add yours. Secret code for ReCAPTCHA you can find here https://www.google.com/recaptcha/admin/create. MognoURI u can take by creating cluster on https://www.mongodb.com/.
 
 npm start or nodemon start
+
+Project really raw. Need to fix types conflict also need to cleanup code, optimize components, create abstract classes at server part.
