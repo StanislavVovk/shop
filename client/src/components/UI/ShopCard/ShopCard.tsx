@@ -65,6 +65,5 @@ export const ShopCard: FC<IShopCardProps> = ({ item }) => {
         </ListGroup>
       </Card>
     </Col>
-
   );
 };

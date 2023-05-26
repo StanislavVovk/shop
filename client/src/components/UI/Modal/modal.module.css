@@ -1,0 +1,7 @@
+.Modal {
+  height: 200px;
+}
+.Button, .Button:hover {
+  background-color: var(--bs-indigo);
+  border: 0;
+}

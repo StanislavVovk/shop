@@ -1,9 +1,9 @@
 import { HTTPHeaders, HTTPMethods } from '../../common/common';
-// import { ParsedUrlQueryInput, stringify } from 'querystring';
+import queryString from 'query-string';
 
 interface IOptions {
   method: HTTPMethods
-  payload?: string
+  payload?: any
   contentType?: string
   query?: any
 }
@@ -36,7 +36,7 @@ export class Http {
   }
 
   _getURL (url: string, query?: any) {
-    return `${url}${query ? `?${query}` : ''}`;
+    return `${url}${query ? `?${queryString.stringify(query)}` : ''}`;
   }
 
   _parseJSON (response: any) {

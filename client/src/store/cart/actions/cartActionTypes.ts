@@ -2,5 +2,6 @@ export enum CartActionTypes {
   ADD_ITEM = 'addItem',
   CLEAR_CART = 'clearCart',
   DECREASE_ITEM = 'decreaseItem',
-  REMOVE_ITEM = 'removeItem'
+  REMOVE_ITEM = 'removeItem',
+  SEND_ORDER = 'sendOrder'
 }

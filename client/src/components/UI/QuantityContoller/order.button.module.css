@@ -1,0 +1,29 @@
+.itemText {
+  width: max-content;
+
+}
+
+.buttonWrapper {
+  display: flex !important;
+  width: max-content;
+  border-radius: 1000px;
+  white-space: nowrap;
+  box-shadow: rgb(0 0 0 / 20%) 0 2px 8px;
+  background: rgb(247, 247, 247);
+  padding: 0;
+}
+
+.buttonStyle {
+  border: none;
+  background-color: white;
+  outline-color: initial !important;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.1s;
+}
+

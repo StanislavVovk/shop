@@ -1,0 +1,6 @@
+export const OrderSchemaRule = {
+  NAME_MIN_LENGTH: 1,
+  PHONE_MIN_LENGTH: 1,
+  EMAIL_MIN_LENGTH: 1,
+  ADDRESS_MIN_LENGTH: 1
+}

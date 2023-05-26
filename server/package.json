@@ -10,7 +10,8 @@
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "express": "^4.12.4",
-    "mongoose": "^5.11.15"
+    "mongoose": "^5.11.15",
+    "axios": "^1.4.0"
   },
   "devDependencies": {
     "dotenv": "^16.0.3",

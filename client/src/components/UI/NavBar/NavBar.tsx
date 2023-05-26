@@ -18,6 +18,8 @@ export const NavBar: FC = () => {
             <Nav className="me-auto">
               <NavigationLink link={API_ENUM.SHOP}>SHOP</NavigationLink>
               <NavigationLink link={API_ENUM.CART}>CART</NavigationLink>
+              <NavigationLink link={API_ENUM.COUPONS}>COUPONS</NavigationLink>
+              <NavigationLink link={API_ENUM.HISTORY}>HISTORY</NavigationLink>
             </Nav>
           </Navbar.Collapse>
         </Container>

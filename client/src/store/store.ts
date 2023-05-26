@@ -1,10 +1,13 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { Shop } from '../services/services';
+import { Shop, Coupons, Cart, Recaptcha, History } from '../services/services';
 import shopReducer from './shop/shopSlice'
 import cartReducer from './cart/cartSlice'
+import couponReducer from './coupons/couponsSlice'
+import historyReducer from './history/historySlice'
 import shopItemSwitcherReducer from './shopItemSwitcher/shopItemSwitcherSlice';
+import recaptchaReducer from './recaptcha/recaptchaSlice';
 const rootReducer = combineReducers(
-  { shopReducer, shopItemSwitcherReducer, cartReducer }
+  { shopReducer, shopItemSwitcherReducer, cartReducer, couponReducer, recaptchaReducer, historyReducer }
 )
 
 export const setupStore = () => configureStore({
@@ -14,7 +17,11 @@ export const setupStore = () => configureStore({
     thunk: {
       extraArgument: {
         services: {
-          Shop
+          Shop,
+          Coupons,
+          Cart,
+          Recaptcha,
+          History
         }
       }
     }

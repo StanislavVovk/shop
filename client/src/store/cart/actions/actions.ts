@@ -1,4 +1,8 @@
 import { ICartSliceInitialState, initialState, IPayload } from '../cartSlice';
+import { createAsyncThunk, SerializedError } from '@reduxjs/toolkit';
+import { CartService } from 'services/cart/cart.service';
+import { UserOrderModel } from 'common/models/UserOrderModel';
+import { CartActionTypes } from './cartActionTypes';
 
 export const addCartItem = (state: ICartSliceInitialState, payload: IPayload) => {
   if (payload.shopItem.item._id in state.itemMap) {
@@ -42,3 +46,12 @@ const filterCartItems = (state: ICartSliceInitialState, payload: IPayload) => {
     state.itemMap[state.cart[i].item._id] -= 1
   }
 }
+
+export const sendOrder = createAsyncThunk <boolean, UserOrderModel, { rejectWithValue: SerializedError, extra: { services: { Cart: CartService } } }>(
+  CartActionTypes.SEND_ORDER,
+  async (data, { rejectWithValue, extra: { services: { Cart } } }) => {
+    return await Cart.sendOrder(data)
+      .then(() => true)
+      .catch(e => rejectWithValue(e))
+  }
+)

@@ -5,9 +5,10 @@ export interface extendedShopItemModel {
 }
 
 export interface UserOrderModel {
-  name: string
+  username: string
   email: string
   phoneNumber: string
   address: string
   order: extendedShopItemModel[]
+  totalPrice: number
 }
