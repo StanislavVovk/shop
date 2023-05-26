@@ -20,6 +20,7 @@ function App () {
   return (
     <Layout>
       <Routes>
+        <Route path={'/'} element={<Shop/>}/>
         <Route path={API_ENUM.SHOP} element={<Shop/>}/>
         <Route path={API_ENUM.CART} element={<CartPage/>}/>
         <Route path={API_ENUM.COUPONS} element={<CouponsPage/>}/>
