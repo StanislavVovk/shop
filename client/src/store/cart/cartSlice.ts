@@ -47,10 +47,10 @@ const cartSlice = createSlice({
       if (payload.coupons) {
         for (let i = 0; i < payload.coupons.length; i++) {
           if (payload.coupons[i].codeDisc === payload.code) {
-            state.totalPrice -= state.totalPrice * payload.coupons[i].discount
+            state.totalPrice -= Number((state.totalPrice * payload.coupons[i].discount).toFixed(2))
             break
           } else {
-            state.totalPrice = state.cart.reduce((sum, cartItem) => sum + cartItem.quantity * cartItem.item.price, 0)
+            state.totalPrice = Number(state.cart.reduce((sum, cartItem) => sum + cartItem.quantity * cartItem.item.price, 0).toFixed(2))
           }
         }
       }

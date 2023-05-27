@@ -48,7 +48,7 @@ export const HistoryPage: FC = () => {
                 <Form.Select
                   onChange={handleSelectChange}>
                   <option>Choose parameter</option>
-                  <option value="name">Name</option>
+                  <option value="username">Name</option>
                   <option value="phoneNumber">PhoneNumber</option>
                   <option value="_id">ID</option>
                 </Form.Select>
