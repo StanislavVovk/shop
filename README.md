@@ -7,4 +7,3 @@ cd to server, npm install. Remove example values of .env file and add yours. Sec
 
 npm start or nodemon start
 
-Project really raw. Need to fix types conflict also need to clean up code, optimize components, create abstract classes at server part.
