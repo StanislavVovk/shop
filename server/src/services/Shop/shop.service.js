@@ -48,15 +48,9 @@ class ShopService {
         }
     }
 
-    async modifyByParam(paramName, paramValue, dataToUpdate) {
+    async modifyByParam(paramName, paramValue, paramToUpdate,  dataToUpdate) {
         try {
-            return await ShopModel.findOneAndUpdate({[paramName]: paramValue}, {dataToUpdate}, {new: true}, (error, shopData) => {
-                if (error) return console.error(error)
-                shopData.items.push(dataToUpdate)
-                shopData.save((err, result) => {
-                    return result
-                })
-            })
+            return await ShopModel.findOneAndUpdate({[paramName]: paramValue}, {[paramToUpdate]: dataToUpdate}, {new: true})
         } catch (e) {
             throw new Error(e)
         }

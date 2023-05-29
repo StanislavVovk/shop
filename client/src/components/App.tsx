@@ -1,14 +1,10 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { Shop } from './common';
+import { Shop, CouponsPage, CartPage, HistoryPage } from './Pages/common';
 import { Layout } from './UI/common';
 import { API_ENUM, useAppDispatch } from '../common/common';
-import { CartPage } from './Pages/Cart/CartPage';
-import { getShops } from '../store/shop/actions/actions';
-import { getCoupons } from '../store/coupons/actions/actions';
-import { CouponsPage } from './Pages/Coupons/CouponsPage';
-import { HistoryPage } from './Pages/History/HistoryPage';
+import { getShops, getCoupons } from '../store/actions';
 
 function App () {
   const dispatch = useAppDispatch()

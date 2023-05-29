@@ -2,34 +2,38 @@ const {Coupons} = require("../../services/services");
 
 class CouponsController {
     async createCoupon(req, res) {
-        try {
-            const result = await Coupons.createCoupon(req.body)
-            res.json(result)
-        } catch (e) {
-            res.statusCode = 500
-            res.json(e)
-        }
+
+        return await Coupons.createCoupon(req.body).
+        then(result => res.json(result))
+            .catch((e) => {
+                res.statusCode = 500
+                res.json({
+                    message: e, statusCode: res.statusCode
+                })
+            })
     }
 
     async getCoupons(req, res) {
-        try {
-            const couponsData = await Coupons.getCoupons()
-            res.json(couponsData)
-        } catch (e) {
-            res.statusCode = 500
-            res.json(e)
-        }
+
+        return await Coupons.getCoupons(req.body)
+            .then(result => res.json(result))
+            .catch((e) => {
+                res.statusCode = 500
+                res.json({
+                    message: e, statusCode: res.statusCode
+                })
+            })
     }
 
     async deleteCoupon(req, res) {
-        try {
-            const result = await Coupons.deleteCoupon(req.body)
-            res.json(result)
-        } catch (e) {
-            res.statusCode = 500
-            res.json(e)
-        }
-
+        return await Coupons.deleteCoupon(req.body)
+            .then(result => res.json(result))
+            .catch((e) => {
+                res.statusCode = 500
+                res.json({
+                    message: e, statusCode: res.statusCode
+                })
+            })
     }
 }
 

@@ -1,5 +1,5 @@
 import { ErrorMessage } from '@hookform/error-message'
-import React, { HTMLInputTypeAttribute, FC } from 'react'
+import { HTMLInputTypeAttribute, FC } from 'react'
 import { FloatingLabel, Form } from 'react-bootstrap'
 import { useController, Mode, UseFormSetValue } from 'react-hook-form'
 import { useAppSelector } from 'common/common'

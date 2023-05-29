@@ -1,12 +1,12 @@
-import type { FC } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { CredentialForm } from './components/CredentialForm';
 import { OrderItems } from './components/OrderItems';
-import { API_ENUM, useAppSelector } from '../../../common/common';
+import { API_ENUM, useAppSelector } from 'common/common';
 import { Navigate } from 'react-router-dom';
-import { OrderModal } from '../../UI/Modal/OrderModal';
+import { OrderModal } from 'components/UI/common';
 
-export const CartPage: FC = () => {
+export const CartPage = () => {
+  // todo create modal here
   const cart = useAppSelector(state => state.cartReducer.cart);
   return (
     <Container className={'h-100 mt-4 mb-5'}>

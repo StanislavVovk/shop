@@ -1,7 +1,7 @@
 import { createAsyncThunk, SerializedError } from '@reduxjs/toolkit';
 import { ShopActionTypes } from './ActionTypes';
-import { ShopService } from '../../../services/shop/shop.service';
-import { ShopModel } from '../../../common/models/ShopModel';
+import { ShopService } from 'services/shop/shop.service';
+import { ShopModel } from 'common/models/common';
 
 export const getShops = createAsyncThunk<ShopModel[], {}, { rejectWithValue: SerializedError, extra: { services: { Shop: ShopService } } }>(
   ShopActionTypes.GET_SHOPS,

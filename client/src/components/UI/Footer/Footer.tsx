@@ -1,7 +1,6 @@
-import type { FC } from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import style from './footer.module.css'
-export const Footer: FC = () => {
+export const Footer = () => {
   return (
     <footer className={`pt-4 pb-2 ${style.Footer}`}>
       <Container className={'d-flex justify-content-center mb-2'}>

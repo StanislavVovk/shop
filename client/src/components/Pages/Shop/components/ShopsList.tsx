@@ -1,11 +1,11 @@
-import type { ChangeEvent, FC } from 'react';
+import type { ChangeEvent } from 'react';
 import React from 'react';
 import { Col, Spinner, Toast, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 import style from '../shop.module.css';
 import { useAppDispatch, useAppSelector } from 'common/common';
-import { shopItemActions } from 'store/shopItemSwitcher/shopItemSwitcherSlice';
+import { shopItemActions } from 'store/actions';
 
-export const ShopsList: FC = () => {
+export const ShopsList = () => {
   const { shops, isLoading } = useAppSelector(state => state.shopReducer)
   const dispatch = useAppDispatch()
   const handleSelection = (event: ChangeEvent<HTMLInputElement>) => {

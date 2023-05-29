@@ -1,7 +1,8 @@
-import { API_ENUM, ENV } from '../../common/common';
-import { ValueOf } from '../../helpers/valueOf';
+import { API_ENUM, ENV } from 'common/common';
+import { ValueOf } from 'helpers/valueOf';
 import { Http } from '../http/http.service';
-import axios from 'axios';
+import { RecaptchaAnswerModel } from 'common/models/common';
+import axios, { AxiosResponse } from 'axios';
 
 export class RecaptchaService {
   protected apiPath: ValueOf<typeof ENV>
@@ -12,10 +13,10 @@ export class RecaptchaService {
     this.http = http
   }
 
-  verifyToken = async (token: string) => {
-    return await axios.post(`${this.apiPath}${API_ENUM.RECAPTCHA}`, {
-      token
-    }).then((data) => data)
+  verifyToken = async (tokenData: string) => {
+    return await axios.post<RecaptchaAnswerModel>(`${this.apiPath}${API_ENUM.RECAPTCHA}`, {
+      token: tokenData
+    }).then((response: AxiosResponse<RecaptchaAnswerModel>) => response.data)
       .catch(e => {
         throw new Error(e)
       })

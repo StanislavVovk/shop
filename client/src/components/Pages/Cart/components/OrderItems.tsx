@@ -1,13 +1,12 @@
-import type { ChangeEvent, FC } from 'react';
-import React from 'react';
+import type { ChangeEvent } from 'react';
 import { Button, Card, Col, FloatingLabel, Form, Row, Toast } from 'react-bootstrap';
 import style from '../../Shop/shop.module.css';
-import { useAppDispatch, useAppSelector } from '../../../../common/common';
-import { CartCard } from '../../../UI/CartCard/CartCard';
-import { cartSliceActions } from '../../../../store/cart/cartSlice';
+import { useAppDispatch, useAppSelector } from 'common/common';
+import { CartCard } from 'components/UI/common';
+import { cartSliceActions } from 'store/actions';
 
 // GOD COMPONENT, need to simplify
-export const OrderItems: FC = () => {
+export const OrderItems = () => {
   const dispatch = useAppDispatch()
   const { cart, totalPrice } = useAppSelector(state => state.cartReducer)
 
@@ -23,7 +22,7 @@ export const OrderItems: FC = () => {
           <Col lg={12} className={'mb-3 mt-4 pe-3 ps-3'}>
             <Toast className={`w-100 p-0 ${style.ShopItems}`}>
               <Toast.Body>
-                <Row xs={1} md={2} lg={2} className={`justify-content-evenly g-4 px-5 ${style.ShopItemsRow}`}>
+                <Row xs={1} md={2} lg={2} className={`justify-content-evenly g-4 px-5 overflow-scroll ${style.HistoryCardRow} `}>
                   {cart.map((cartItem, key) => {
                     return cartItem && <CartCard key={key} item={cartItem.item}/>
                   })}

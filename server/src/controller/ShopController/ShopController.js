@@ -48,10 +48,9 @@ class ShopController {
 
     async modifyByParam(req, res) {
         try {
-            const {paramName, paramValue, items} = req.body
-            const result = await Shop.modifyByParam(paramName, paramValue, items)
+            const {paramName, paramValue, paramToUpdate, items} = req.body
+            const result = await Shop.modifyByParam(paramName, paramValue, paramToUpdate, items)
             res.json(result)
-
         } catch (e) {
             res.statusCode = 500
             res.json(e)

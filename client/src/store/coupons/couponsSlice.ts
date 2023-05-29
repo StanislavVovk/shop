@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf, SerializedError } from '@reduxjs/toolkit';
-import { CouponsModel } from '../../common/models/CouponsModel';
+import { CouponsModel } from 'common/models/common';
 import { getCoupons } from './actions/actions';
 
 interface ICouponsSlice {

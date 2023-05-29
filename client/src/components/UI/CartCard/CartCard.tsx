@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 import { Card, Col, ListGroup, Row } from 'react-bootstrap';
-import { extendedShopItemModel } from '../../../common/models/UserOrderModel';
+import { UserOrderItem } from 'common/models/common';
 import { QuantityController } from '../common';
 import style from './cartCard.module.css'
-export const CartCard: FC<Pick<extendedShopItemModel, 'item'>> = ({ item }) => {
+export const CartCard: FC<Pick<UserOrderItem, 'item'>> = ({ item }) => {
   return (
       <Col className={`justify-content-center d-flex ${style.Col}`}>
         <Card className={style.Card}>

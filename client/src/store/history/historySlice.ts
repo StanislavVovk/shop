@@ -1,9 +1,9 @@
 import { createSlice, isAnyOf, PayloadAction } from '@reduxjs/toolkit';
 import { getOrders } from './actions/action';
-import { UserOrderModel } from '../../common/models/UserOrderModel';
+import { UserOrderModel } from 'common/models/common';
 
 export interface HistorySliceInitial {
-  orders: UserOrderModel[] | UserOrderModel | []
+  orders: UserOrderModel[] | []
 }
 const initialState: HistorySliceInitial = {
   orders: []
@@ -14,9 +14,8 @@ const historySlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => builder.addMatcher(
-    // todo fix this. Code smells
-    isAnyOf(getOrders.fulfilled), (state, { payload }: PayloadAction<any>) => {
-      state.orders = payload.data
+    isAnyOf(getOrders.fulfilled), (state, { payload }: PayloadAction<UserOrderModel[] | []>) => {
+      state.orders = payload
     }
   )
 })

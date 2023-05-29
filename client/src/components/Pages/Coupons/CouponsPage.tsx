@@ -1,6 +1,6 @@
 import { Container, Row } from 'react-bootstrap';
-import { useAppSelector } from '../../../common/common';
-import { CouponCard } from '../../UI/CouponCard/CouponCard';
+import { useAppSelector } from 'common/common';
+import { CouponCard } from 'components/UI/CouponCard/CouponCard';
 
 export const CouponsPage = () => {
   const coupons = useAppSelector(state => state.couponReducer.coupons)

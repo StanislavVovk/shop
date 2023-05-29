@@ -21,7 +21,6 @@ const PORT = 5000
 async function startApp() {
     try {
         await mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
-        // const listener =  app.listen(process.env.PORT, () => console.log(`App started at port ${listener.address().port}`))
         const listener =  app.listen(PORT, () => console.log(`App started at port ${listener.address().port}`))
     } catch (e) {
         console.log(e)

@@ -1,5 +1,5 @@
-import { ShopItemModel } from './ShopItemModel';
-export interface extendedShopItemModel {
+import { ShopItemModel } from '../ShopItemModel/ShopItemModel';
+export interface UserOrderItem {
   item: ShopItemModel
   quantity: number
 }
@@ -9,6 +9,6 @@ export interface UserOrderModel {
   email: string
   phoneNumber: string
   address: string
-  order: extendedShopItemModel[]
+  order: UserOrderItem[]
   totalPrice: number
 }

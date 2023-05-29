@@ -1,18 +1,19 @@
-import type { FC } from 'react';
-import React, { useRef, useState } from 'react';
+import type { SubmitHandler } from 'react-hook-form';
+import { useRef, useState } from 'react';
 import { Alert, Col, Form } from 'react-bootstrap';
 import { InputComponent } from 'components/UI/common';
-import { OrderPayloadEnum } from 'common/contants/OrderPayloadEnum';
-import { useAppDispatch, useAppForm, useAppSelector } from 'common/hooks/hooks';
-import { orderValidationSchema } from 'common/validationShema/OrderSchema/orderValidationSchema';
-import { OrderDefaultPayload } from 'common/contants/OrderDefaultPayload';
-import { SubmitHandler } from 'react-hook-form';
-import { sendOrder } from '../../../../store/cart/actions/actions';
-import { UserOrderModel } from '../../../../common/models/UserOrderModel';
+import {
+  ENV,
+  OrderDefaultPayload,
+  OrderPayloadEnum,
+  orderValidationSchema,
+  useAppDispatch,
+  useAppForm,
+  useAppSelector
+} from 'common/common'
+import { sendOrder, verifyRecaptcha } from 'store/actions';
+import { UserOrderModel } from 'common/models/common';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { ENV } from '../../../../common/enums/ENV/env';
-import { recaptchaActions } from '../../../../store/recaptcha/recaptchaSlice';
-import { verifyRecaptcha } from '../../../../store/recaptcha/actions/actions';
 
 interface IFormValue {
   name: string
@@ -21,8 +22,9 @@ interface IFormValue {
   phoneNumber: string
 }
 
-export const CredentialForm: FC = () => {
+export const CredentialForm = () => {
   const dispatch = useAppDispatch()
+  const { cart, totalPrice } = useAppSelector(state => state.cartReducer)
   const {
     control,
     errors,
@@ -32,26 +34,31 @@ export const CredentialForm: FC = () => {
     defaultValues: OrderDefaultPayload,
     validationSchema: orderValidationSchema
   })
+
   const [errorCaptcha, setError] = useState('')
-  const captchaRef = useRef(null)
-  const { cart, totalPrice } = useAppSelector(state => state.cartReducer)
+
+  const captchaRef = useRef<ReCAPTCHA>(null)
+
   const handleFormSubmit: SubmitHandler<Record<keyof IFormValue, string>> = async (values) => {
     const { name, email, phoneNumber, address } = values
 
     const order: UserOrderModel = {
       username: name, email, phoneNumber, address, order: cart, totalPrice
     }
-    // @ts-expect-error
-    const token = captchaRef.current.getValue()
+
+    const token = captchaRef?.current?.getValue()
+
     if (token) {
-      const validToken = await dispatch(verifyRecaptcha(token))
-      // @ts-expect-error
-      if (validToken.payload.status === 200) {
-        setError('Need to verify by Captcha')
-        void dispatch(sendOrder(order))
-      } else {
-        console.error('Sorry!! Token invalid');
-      }
+      await dispatch(verifyRecaptcha(token))
+        .unwrap()
+        .then(data => {
+          if (data.success) {
+            setError('')
+            void dispatch(sendOrder(order))
+          } else {
+            setError('Sorry!! Invalid token');
+          }
+        })
     } else {
       setError('Need to verify by Captcha')
     }
@@ -100,9 +107,16 @@ export const CredentialForm: FC = () => {
         />
         <ReCAPTCHA
           sitekey={ENV.SITE_KEY as string}
-          onClick={() => dispatch(recaptchaActions.addRecaptchaRef(captchaRef.current))}
           ref={captchaRef}/>
-        {errorCaptcha !== '' && <Alert variant={'danger'}>{errorCaptcha}</Alert>}
+        {errorCaptcha
+          ? (
+              errorCaptcha !== ''
+                ? (
+            <Alert variant={'danger'}>{errorCaptcha}</Alert>
+                  )
+                : null
+            )
+          : null}
       </Form>
     </Col>
   );

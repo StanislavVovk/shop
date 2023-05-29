@@ -1,20 +1,26 @@
 const {Recaptcha} = require("../../services/services");
 
 class RecaptchaController {
-    async verify (req, res) {
-        try {
-            const verifyResult = Recaptcha.verify(req.body.token)
-            return res.status(200).json({
-                success:true,
-                message: "Token successfully verified",
-                verification_info: verifyResult.data
-            });
-        } catch (e) {
+    async verify(req, res) {
+
+        return await Recaptcha.verify(req.body.token).then(response => {
+            if (response.success) {
+                return res.status(200).json({
+                    success: true,
+                    message: "Token successfully verified",
+                });
+            } else {
+                return res.status(500).json({
+                    success: false,
+                    message: response['error-codes']
+                })
+            }
+        }).catch(() => {
             return res.status(500).json({
-                success:false,
-                message: "Error verifying token"
+                success: false,
+                message: 'Invalid token'
             })
-        }
+        })
     }
 }
 

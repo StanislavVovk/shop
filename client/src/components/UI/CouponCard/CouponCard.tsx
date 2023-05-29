@@ -1,7 +1,7 @@
 import { Button, Card, Col, Overlay, Tooltip } from 'react-bootstrap';
 import style from '../CartCard/cartCard.module.css';
-import { CouponsModel } from '../../../common/models/CouponsModel';
-import React, { FC, useRef, useState } from 'react';
+import { CouponsModel } from 'common/models/common';
+import { FC, useRef, useState } from 'react';
 
 export const CouponCard: FC<Omit<CouponsModel, '_id'>> = (item) => {
   const [show, setShow] = useState(false);
@@ -14,10 +14,8 @@ export const CouponCard: FC<Omit<CouponsModel, '_id'>> = (item) => {
     }
   }
   const handleCopyClick = () => {
-    // Asynchronously call copyTextToClipboard
     copyTextToClipboard()
       .then(() => {
-        // If successful, update the isCopied state value
         setShow(true);
         setTimeout(() => {
           setShow(false);

@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf, PayloadAction, SerializedError } from '@reduxjs/toolkit';
-import { ShopModel } from '../../common/models/ShopModel';
+import { ShopModel } from 'common/models/common';
 import { getShops } from './actions/actions';
 
 interface IShopSliceInitial {
@@ -42,4 +42,3 @@ export const shopSlice = createSlice({
 })
 
 export default shopSlice.reducer
-export const shopActions = shopSlice.actions

@@ -1,11 +1,9 @@
-import type { FC } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import style from './navbar.module.css'
 import { NavigationLink } from '../NavLink/NavLink';
-import { API_ENUM } from '../../../common/common';
+import { API_ENUM } from 'common/common';
 
-export const NavBar: FC = () => {
-  // todo create link mapper
+export const NavBar = () => {
   return (
     <>
       <Navbar collapseOnSelect expand="sm" sticky="top" bg="dark" variant="dark">

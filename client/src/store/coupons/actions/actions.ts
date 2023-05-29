@@ -1,6 +1,6 @@
 import { createAsyncThunk, SerializedError } from '@reduxjs/toolkit';
-import { CouponsModel } from '../../../common/models/CouponsModel';
-import { CouponsService } from '../../../services/coupons/coupons.service';
+import { CouponsModel } from 'common/models/common';
+import { CouponsService } from 'services/coupons/coupons.service';
 import { CouponsActionTypes } from './ActionTypes';
 
 export const getCoupons = createAsyncThunk<CouponsModel[], {}, {

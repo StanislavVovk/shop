@@ -1,4 +1,4 @@
-import { ShopItemModel } from './ShopItemModel';
+import { ShopItemModel } from '../ShopItemModel/ShopItemModel';
 
 export interface ShopModel {
   name: string

@@ -1,9 +1,7 @@
-import { ValueOf } from '../../helpers/valueOf';
-import { ENV } from '../../common/enums/ENV/env';
+import { ValueOf } from 'helpers/valueOf';
+import { ENV, API_ENUM, HTTPMethods } from 'common/common';
 import { Http } from '../http/http.service';
-import { API_ENUM } from '../../common/enums/Routes/routes';
-import { HTTPMethods } from '../../common/enums/HTTP/HTTPMethods';
-import { IRequest } from '../cart/cart.service';
+import { RequestModel } from 'common/models/common';
 
 export class CouponsService {
   protected apiPath: ValueOf<typeof ENV>
@@ -13,7 +11,7 @@ export class CouponsService {
     this.http = http
   }
 
-  async loadCoupons (query: IRequest | '') {
+  async loadCoupons (query: RequestModel | string) {
     return await this.http.load(
       `${this.apiPath}${API_ENUM.COUPONS}`, {
         method: HTTPMethods.GET,

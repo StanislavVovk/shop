@@ -1,11 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { Shop, Coupons, Cart, Recaptcha, History } from '../services/services';
+import { Shop, Coupons, Cart, Recaptcha, History } from 'services/services';
 import shopReducer from './shop/shopSlice'
 import cartReducer from './cart/cartSlice'
 import couponReducer from './coupons/couponsSlice'
 import historyReducer from './history/historySlice'
 import shopItemSwitcherReducer from './shopItemSwitcher/shopItemSwitcherSlice';
 import recaptchaReducer from './recaptcha/recaptchaSlice';
+
 const rootReducer = combineReducers(
   { shopReducer, shopItemSwitcherReducer, cartReducer, couponReducer, recaptchaReducer, historyReducer }
 )

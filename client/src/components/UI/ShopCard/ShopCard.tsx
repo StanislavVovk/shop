@@ -1,9 +1,10 @@
 import type { FC } from 'react';
 import { Button, Card, Col, ListGroup, Row } from 'react-bootstrap';
-import { ShopItemModel } from '../../../common/models/ShopItemModel';
+import { CartRequestModel, ShopItemModel } from 'common/models/common';
 import style from './shopCard.module.css'
-import { useAppDispatch, useAppSelector } from '../../../common/common';
-import { cartSliceActions, IPayload } from '../../../store/cart/cartSlice';
+import { useAppDispatch, useAppSelector } from 'common/common';
+
+import { cartSliceActions } from 'store/actions';
 
 interface IShopCardProps {
   item: ShopItemModel
@@ -19,14 +20,14 @@ export const ShopCard: FC<IShopCardProps> = ({ item }) => {
   const checkItemInCart = _id in itemMap
   const itemQuantity = checkItemInCart ? cart[itemMap[item._id]].quantity : 0
 
-  const newItem: IPayload = {
+  const newItem: CartRequestModel = {
     shopName,
     shopItem: {
       item,
       quantity: itemQuantity
     }
   }
-  const handleButtonClick = (newItem: IPayload) => {
+  const handleButtonClick = (newItem: CartRequestModel) => {
     if (checkItemInCart) {
       dispatch(cartSliceActions.removeItem(newItem))
     } else {

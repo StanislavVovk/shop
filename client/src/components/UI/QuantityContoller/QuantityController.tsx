@@ -1,12 +1,11 @@
-
 import { useAppDispatch, useAppSelector } from 'common/common'
 import type { FC } from 'react'
 
 import style from './order.button.module.css'
-import { cartSliceActions, IPayload } from '../../../store/cart/cartSlice';
-import { extendedShopItemModel } from '../../../common/models/UserOrderModel';
+import { cartSliceActions } from 'store/cart/cartSlice';
+import { CartRequestModel, UserOrderItem } from 'common/models/common';
 
-export const QuantityController: FC<Pick<extendedShopItemModel, 'item'>> = ({ item }) => {
+export const QuantityController: FC<Pick<UserOrderItem, 'item'>> = ({ item }) => {
   const dispatch = useAppDispatch()
   const {
     cart,
@@ -20,17 +19,17 @@ export const QuantityController: FC<Pick<extendedShopItemModel, 'item'>> = ({ it
 
   const itemQuantity = item._id in itemMap ? cart[itemMap[item._id]].quantity : 0
 
-  const newItem: IPayload = {
+  const newItem: CartRequestModel = {
     shopName,
     shopItem: {
       item,
       quantity: itemQuantity
     }
   }
-  const handleIncreaseClick = (newItem: IPayload) => {
+  const handleIncreaseClick = (newItem: CartRequestModel) => {
     dispatch(addItem(newItem))
   }
-  const handleDecreaseClick = (newItem: IPayload) => {
+  const handleDecreaseClick = (newItem: CartRequestModel) => {
     dispatch(decreaseItem(newItem))
   }
   return (
