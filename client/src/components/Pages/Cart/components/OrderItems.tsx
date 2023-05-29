@@ -16,13 +16,13 @@ export const OrderItems = () => {
   }
 
   return (
-    <Col md={12} xs={12} lg={6} className={`${style.ColWrapper} d-flex justify-content-center`}>
+    <Col md={12} xs={12} lg={7} className={`${style.ColWrapper} d-flex justify-content-center`}>
       <Row>
         <Toast className='w-100 ms-3 me-3'>
-          <Col lg={12} className={'mb-3 mt-4 pe-3 ps-3'}>
+          <Col lg={12} className={'mb-3 mt-4'}>
             <Toast className={`w-100 p-0 ${style.ShopItems}`}>
               <Toast.Body>
-                <Row xs={1} md={2} lg={2} className={`justify-content-evenly g-4 px-5 overflow-scroll ${style.HistoryCardRow} `}>
+                <Row xs={1} md={2} lg={2} className={`justify-content-evenly g-4 px-5 ${style.HistoryCardRow} `}>
                   {cart.map((cartItem, key) => {
                     return cartItem && <CartCard key={key} item={cartItem.item}/>
                   })}

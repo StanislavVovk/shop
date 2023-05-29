@@ -5,7 +5,7 @@ import { QuantityController } from '../common';
 import style from './cartCard.module.css'
 export const CartCard: FC<Pick<UserOrderItem, 'item'>> = ({ item }) => {
   return (
-      <Col className={`justify-content-center d-flex ${style.Col}`}>
+      <Col className={`justify-content-center d-flex ${style.Col} p-3`}>
         <Card className={style.Card}>
           <Card.Img variant="top" src={item.imageURL}/>
           <Card.Body>
